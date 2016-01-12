@@ -1,0 +1,15 @@
+//
+   Created by KHC on 11/12/2015.
+
+script(type="text/template", id = "locationTemplate").
+    <tr id='<%= lid %>'>
+    <td><%= locationName %></td>
+    <td><%= number %></td>
+    <td><button type="button" class="btn btn-primary"><%= alertButtonText %></button></td>
+    <td><input type="text"></td>
+    <td><button type="button" class="btn btn-primary"><%= clearButtonText %></button></td>
+    </tr>
+
+script(type="text/template", id = "locationTableTemplate").
+    <table class="table table-bordered table-striped" id="locTable"></table>
+

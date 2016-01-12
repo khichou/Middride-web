@@ -1,0 +1,47 @@
+extends layout
+
+
+block content
+  - var stopLoc = JSON.parse(locations)
+  mixin tabR(locName,numOfPassenger,locID)
+    tr(id=locID)
+      td= locName
+      td= numOfPassenger
+      td
+        form(action='/notify/'+locID+'/comments', method="post")
+          button(type="submit", class="btn btn-primary",name=locName,value=locID) Alert Passenger
+      td
+        input(type="text")
+      td
+        button(type="button", class="btn btn-primary") Clear
+
+  div(class="container location_table")
+    h2(class="form-signin-heading blue-text") MiddRides Dispatcher Portal
+    <!--Links to other views-->
+    div(class="row other_views")
+      div(class="col-sm-4")
+        <a href ="announcement.html">Make An Announcement</a>
+      div(class="col-sm-4")
+        <a href ="dispatcher_settings.html">Dispatcher Settings</a>
+      div(class="col-sm-4")
+        <a href ="login.html">Logout</a>
+
+    table(class="table table-bordered table-striped")
+      thead
+        tr
+          th(class="table_column") Stop Location
+          th Passengers Waiting
+          th Alert
+          th Update Stop
+          th Clear Stop
+      tbody
+        each locName,locID in stopLoc
+          +tabR(locName,'0',locID)
+    div(class ="center-block")
+      button(type="button", class="btn btn-success bottom-button center-block") Update Table
+      <!--This is the button which stops the service-->
+      button(type="button", class="btn-lg btn-danger bottom-button center-block") Disable MiddRides
+
+
+
+
